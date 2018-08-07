@@ -1,7 +1,7 @@
 
 import HttpRequest from './http_request';
 
-interface IUserProvider {
+export interface IUserProvider {
   getUsers(): Promise<any>;
 }
 

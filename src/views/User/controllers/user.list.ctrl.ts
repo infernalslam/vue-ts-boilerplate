@@ -1,5 +1,5 @@
 import UserProvider from '@/resources/user_provider';
-import UserModel from '@/models/user';
+import UserModel from '@/classes/models/user';
 
 interface IUserListController {
   users: UserModel[];
@@ -7,11 +7,11 @@ interface IUserListController {
 }
 
 class UserListController implements IUserListController {
-  public users!: UserModel[];
+  public users: UserModel[] = [];
   private userService: UserProvider;
   constructor(component?: any, userProvider?: UserProvider) {
     this.userService = userProvider || new UserProvider(process.env.VUE_APP_API);
-    // this.users = [];
+    this.users = [];
   }
 
   public async fetchUsers(): Promise<any> {
