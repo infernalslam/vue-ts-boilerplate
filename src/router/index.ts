@@ -18,15 +18,16 @@ export default new Router({
     },
     {
       path: '/user',
-      name: 'user',
       component: UserIndex,
       children: [
         {
           path: '/',
+          name: 'user-list',
           component: UserList,
         },
         {
           path: 'create',
+          name: 'user-create',
           component: UserCreate,
         },
       ],

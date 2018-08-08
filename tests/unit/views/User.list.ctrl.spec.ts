@@ -1,8 +1,7 @@
-import { shallowMount } from '@vue/test-utils';
-import UserIndexComponent from '@/views/User/controllers/user.index.ctrl';
+import UserListController from '@/views/User/controllers/user.list.ctrl';
 
-describe('HelloWorld.vue', () => {
-  it('renders props.msg when passed', () => {
+describe('User List Controller', () => {
+  it('On init', async () => {
     const mockService = {
       getUsers: jest.fn().mockReturnValue([
         {
@@ -27,11 +26,10 @@ describe('HelloWorld.vue', () => {
         },
       ]),
     };
-    const component = new UserIndexComponent(null, mockService);
-    expect(component.title).toEqual('');
-    // console.log(component);
-    // console.log(component.users);
-    // component.created();
+    const controller = new UserListController(null, mockService);
+    await controller.fetchUsers();
     expect(mockService.getUsers).toHaveBeenCalled();
+    expect(controller.viewModel.users.length).toEqual(4);
+    expect(controller.viewModel.users).toMatchObject(mockService.getUsers());
   });
 });

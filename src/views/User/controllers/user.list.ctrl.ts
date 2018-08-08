@@ -2,20 +2,28 @@ import UserProvider from '@/resources/user_provider';
 import UserModel from '@/classes/models/user';
 
 interface IUserListController {
-  users: UserModel[];
-  fetchUsers(): void;
+  fetchUsers(): Promise<any>;
+}
+
+class UserListViewModel {
+  public users: UserModel[];
+
+  constructor() {
+    this.users = [];
+  }
 }
 
 class UserListController implements IUserListController {
-  public users: UserModel[] = [];
-  private userService: UserProvider;
-  constructor(component?: any, userProvider?: UserProvider) {
+  public viewModel: UserListViewModel;
+  private userService: UserProvider | any;
+
+  constructor(component?: any, userProvider?: UserProvider | any) {
     this.userService = userProvider || new UserProvider(process.env.VUE_APP_API);
-    this.users = [];
+    this.viewModel = new UserListViewModel();
   }
 
   public async fetchUsers(): Promise<any> {
-    this.users = (await this.userService.getUsers()).map((user) => {
+    this.viewModel.users = (await this.userService.getUsers()).map((user) => {
       return new UserModel(user);
     });
   }

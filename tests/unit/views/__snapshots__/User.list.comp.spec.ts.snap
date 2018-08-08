@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User : List.vue init component properly 1`] = `
+<div
+  class="user-list"
+>
+  <h3>
+    User List
+  </h3>
+   
+  <ul>
+    <li>
+      Wisarut Phuv
+    </li>
+    <li>
+      Jack Ma
+    </li>
+    <li>
+      Steve Jobs
+    </li>
+    <li>
+      Nati 
+    </li>
+  </ul>
+</div>
+`;

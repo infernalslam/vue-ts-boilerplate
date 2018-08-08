@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User : Create.vue init component properly 1`] = `
+<div
+  class="user-create"
+>
+  <h3>
+    User Create
+  </h3>
+   
+  <button
+    id="btn"
+  >
+    Click
+  </button>
+   
+  <hr
+    class="line"
+  />
+   
+  <h3>
+    Created User
+  </h3>
+   
+  <h3>
+    
+  </h3>
+</div>
+`;

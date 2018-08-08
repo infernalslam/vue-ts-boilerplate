@@ -1,48 +1,19 @@
-import { Component, Vue } from 'vue-property-decorator';
-import UserProvider, { IUserProvider } from '@/resources/user_provider';
+import UserProvider from '@/resources/user_provider';
 import UserModel from '@/classes/models/user';
 
-interface IUserIndexComponent {
-  created(): void;
-  saveChange(data: string): void;
-  fetchUsers(): Promise<any>;
+interface IUserIndexController {
+  init(): void;
 }
 
-@Component
-class UserIndexComponent extends Vue implements IUserIndexComponent {
-  public title: string = '';
-  public text: string = '';
-  public users: UserModel[] = [];
+class UserIndexController implements IUserIndexController {
   private userService: UserProvider;
-
-  // constructor(component?: any, userProvider?: UserProvider) {
-  constructor(vue: any, userProvider?: IUserProvider) {
-    super();
-    console.log(vue);
-    console.log(userProvider);
+  constructor(component?: any, userProvider?: UserProvider) {
     this.userService = userProvider || new UserProvider(process.env.VUE_APP_API);
-    // this.users = [];
   }
 
-  public created() {
-    console.log('index created');
-    this.fetchUsers();
+  public init(): void {
+    console.log('User Index Init');
   }
-
-  public saveChange(data: string) {
-    this.title = data;
-  }
-
-  public fetchUsers: () => Promise<any> = async () => {
-    this.users = (await this.userService.getUsers()).map((user) => {
-      return new UserModel(user);
-    });
-  }
-  // public async fetchUsers(): Promise<any> {
-    // this.users = (await this.userService.getUsers()).map((user) => {
-    //   return new UserModel(user);
-    // });
-  // }
 }
 
-export default UserIndexComponent;
+export default UserIndexController;

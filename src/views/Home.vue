@@ -31,7 +31,6 @@ import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 export default class Home extends Vue {
   public name!: string;
   public email!: string;
-  // private setState(): void;
   public setUser!: () => void;
 }
 </script>
