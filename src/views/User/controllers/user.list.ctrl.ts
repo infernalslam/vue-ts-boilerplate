@@ -1,5 +1,5 @@
 import UserProvider from '@/resources/user_provider';
-import UserModel from '@/classes/models/user';
+import UserModel from '@/models/user';
 
 interface IUserListController {
   fetchUsers(): Promise<any>;

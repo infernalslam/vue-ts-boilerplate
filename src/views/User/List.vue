@@ -2,7 +2,7 @@
   <div class="user-list">
     <h3>User List</h3>
     <ul>
-      <li v-for="(user, index) in viewModel.users">{{user.fullName()}}</li>
+      <li v-for="(user, index) in viewModel.users" :key="index">{{user.fullName()}}</li>
     </ul>
   </div>
 </template>
@@ -14,7 +14,6 @@ import Controller from './controllers/user.list.ctrl';
 @Component
 export default class List extends Vue {
   public controller: Controller;
-
   constructor() {
     super();
     this.controller = new Controller();
